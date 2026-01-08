@@ -12,7 +12,7 @@ app.use(express.json());
 // DB Connect
 connectDB();
 
-// Test / Default Route
+// Default / Test Route
 app.get("/", (req, res) => {
   res.json({ msg: "ReferHub API Running" });
 });
