@@ -14,12 +14,12 @@ connectDB();
 
 // Default / Test Route
 app.get("/", (req, res) => {
-  res.json({ msg: "ReferHub API Running" });
+  res.json({ message: "ReferHub API Running" });
 });
 
 // 404 Handle
 app.use((req, res) => {
-  res.status(404).json({ msg: "Not Found" });
+  res.status(404).json({ message: "Not Found" });
 });
 
 // server
