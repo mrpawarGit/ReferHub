@@ -2,6 +2,7 @@ const express = require("express");
 const cors = require("cors");
 const connectDB = require("./config/db");
 const authRoutes = require("./routes/auth.routes");
+const candidatesRoutes = require("./routes/candidate.routes");
 require("dotenv").config();
 
 const app = express();
@@ -15,6 +16,7 @@ connectDB();
 
 // routes
 app.use("/api/auth", authRoutes);
+app.use("/api/candidates", candidatesRoutes);
 
 // Default / Test Route
 app.get("/", (req, res) => {
