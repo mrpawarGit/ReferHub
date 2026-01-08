@@ -6,10 +6,11 @@ const {
   updateCandidate,
   deleteCandidate,
 } = require("../controllers/candidate.controller");
+const upload = require("../middleware/upload.middleware");
 const router = express.Router();
 
-// ref a candidate
-router.post("/", authMiddleware, createCandidate);
+// create / ref a candidate
+router.post("/", authMiddleware, upload.single("resume"), createCandidate);
 // get all candidates
 router.get("/", authMiddleware, getCandidates);
 // update candidate

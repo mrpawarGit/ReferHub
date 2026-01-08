@@ -1,4 +1,5 @@
 const Candidate = require("../models/Candidate.model");
+const uploadToCloudinary = require("../utils/cloudinaryUpload");
 
 // create candidate
 exports.createCandidate = async (req, res) => {
@@ -10,14 +11,20 @@ exports.createCandidate = async (req, res) => {
       return res.status(400).json({ message: "All fields are required" });
     }
 
-    const candidate = await Candidate.create({
+    const candidateData = {
       name,
       email,
       phone,
       jobTitle,
       referredBy: req.user.id,
-    });
+    };
 
+    // check pdf - if present, upload to cloudanry
+    if (req.file) {
+      const result = await uploadToCloudinary(req.file);
+      candidateData.resumeUrl = result.secure_url;
+    }
+    const candidate = await Candidate.create(candidateData);
     // send res
     res.status(201).json(candidate);
   } catch (error) {
