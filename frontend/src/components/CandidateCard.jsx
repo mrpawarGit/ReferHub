@@ -7,7 +7,7 @@ const statusColors = {
   Hired: "bg-green-100 text-green-700",
 };
 
-const CandidateCard = ({ candidate }) => {
+const CandidateCard = ({ candidate, onClick }) => {
   const [status, setStatus] = useState(candidate.status);
   const [loading, setLoading] = useState(false);
 
@@ -29,8 +29,10 @@ const CandidateCard = ({ candidate }) => {
   };
 
   return (
-    <div className="bg-white p-4 rounded shadow flex items-center justify-between">
-      {/* Candidate Info */}
+    <div
+      onClick={onClick}
+      className="bg-white p-4 rounded shadow flex items-center justify-between cursor-pointer hover:bg-gray-50"
+    >
       <div>
         <h2 className="font-semibold text-lg">{candidate.name}</h2>
         <p className="text-sm text-gray-600">{candidate.jobTitle}</p>
@@ -45,8 +47,9 @@ const CandidateCard = ({ candidate }) => {
         </span>
 
         <select
-          value={status}
+          onClick={(e) => e.stopPropagation()}
           onChange={handleStatusChange}
+          value={status}
           disabled={loading}
           className="border px-2 py-1 rounded text-sm"
         >

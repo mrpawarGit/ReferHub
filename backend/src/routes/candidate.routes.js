@@ -5,6 +5,7 @@ const {
   getCandidates,
   updateCandidate,
   deleteCandidate,
+  updateCandidateData,
 } = require("../controllers/candidate.controller");
 const upload = require("../middleware/upload.middleware");
 const router = express.Router();
@@ -13,9 +14,11 @@ const router = express.Router();
 router.post("/", authMiddleware, upload.single("resume"), createCandidate);
 // get all candidates
 router.get("/", authMiddleware, getCandidates);
-// update candidate
+// update candidate stauts
 router.put("/:id/status", authMiddleware, updateCandidate);
 // delete candidate
 router.delete("/:id", authMiddleware, deleteCandidate);
+// updateCandidateData
+router.put("/:id", authMiddleware, updateCandidateData);
 
 module.exports = router;

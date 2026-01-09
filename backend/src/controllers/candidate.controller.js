@@ -48,7 +48,7 @@ exports.getCandidates = async (req, res) => {
   }
 };
 
-// Update candidate - By id
+// Update status candidate - By id
 exports.updateCandidate = async (req, res) => {
   try {
     const { status } = req.body;
@@ -75,6 +75,27 @@ exports.updateCandidate = async (req, res) => {
   } catch (error) {
     console.error(error);
     res.status(500).json({ message: "Server error" });
+  }
+};
+
+// update Candidate Data
+exports.updateCandidateData = async (req, res) => {
+  try {
+    const { name, phone, jobTitle } = req.body;
+
+    const candidate = await Candidate.findByIdAndUpdate(
+      req.params.id,
+      { name, phone, jobTitle },
+      { new: true }
+    );
+
+    if (!candidate) {
+      return res.status(404).json({ message: "Candidate not found" });
+    }
+
+    res.json(candidate);
+  } catch (error) {
+    res.status(500).json({ message: "Failed to update candidate" });
   }
 };
 
