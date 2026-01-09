@@ -1,4 +1,5 @@
 import { createContext, useContext, useEffect, useState } from "react";
+import Loader from "../components/Loader";
 
 const AuthContext = createContext(null);
 
@@ -42,7 +43,7 @@ export const AuthProvider = ({ children }) => {
 
   return (
     <AuthContext.Provider value={{ user, login, register, logout, loading }}>
-      {!loading && children}
+      {loading ? <Loader message="Waking up server..." /> : children}
     </AuthContext.Provider>
   );
 };
