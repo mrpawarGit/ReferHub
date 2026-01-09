@@ -1,23 +1,28 @@
 import { useEffect, useState } from "react";
 import api from "../api/axios";
 import CandidateCard from "../components/CandidateCard";
+import CandidateForm from "../components/CandidateForm";
 
 const Dashboard = () => {
   const [candidates, setCandidates] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [showForm, setShowForm] = useState(false);
 
+  // fetch Candidates
+  const fetchCandidates = async () => {
+    try {
+      setLoading(true);
+      const res = await api.get("/api/candidates");
+      setCandidates(res.data);
+    } catch (error) {
+      console.error("Failed to fetch candidates", error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  // Fetch on page load
   useEffect(() => {
-    const fetchCandidates = async () => {
-      try {
-        const res = await api.get("/api/candidates");
-        setCandidates(res.data);
-      } catch (error) {
-        console.error("Failed to fetch candidates", error);
-      } finally {
-        setLoading(false);
-      }
-    };
-
     fetchCandidates();
   }, []);
 
@@ -29,12 +34,16 @@ const Dashboard = () => {
           Candidate Dashboard
         </h1>
 
-        <button className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700">
+        {/* Refer Candidate */}
+        <button
+          onClick={() => setShowForm(true)}
+          className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
+        >
           + Refer Candidate
         </button>
       </div>
 
-      {/* Content */}
+      {/* Loading candidates */}
       {loading ? (
         <p className="text-gray-600">Loading candidates...</p>
       ) : candidates.length === 0 ? (
@@ -47,6 +56,14 @@ const Dashboard = () => {
             <CandidateCard key={candidate._id} candidate={candidate} />
           ))}
         </div>
+      )}
+
+      {/* CandidateForm */}
+      {showForm && (
+        <CandidateForm
+          onClose={() => setShowForm(false)}
+          onSuccess={fetchCandidates}
+        />
       )}
     </div>
   );
