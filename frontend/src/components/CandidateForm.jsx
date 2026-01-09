@@ -98,12 +98,25 @@ const CandidateForm = ({ onClose, onSuccess }) => {
             className="w-full border px-3 py-2 rounded"
           />
 
-          <input
-            type="file"
-            accept=".pdf"
-            onChange={(e) => setResume(e.target.files[0])}
-            className="w-full text-sm"
-          />
+          {/* --- UPDATED SECTION START --- */}
+          <div className="border border-dashed border-gray-300 rounded p-2">
+            <label className="block text-sm font-medium text-gray-700 mb-1">
+              📄 Upload Resume
+            </label>
+            <input
+              type="file"
+              accept=".pdf"
+              onChange={(e) => setResume(e.target.files[0])}
+              className="w-full text-sm text-gray-500
+                file:mr-4 file:py-2 file:px-4
+                file:rounded-full file:border-0
+                file:text-xs file:font-semibold
+                file:bg-blue-50 file:text-blue-700
+                hover:file:bg-blue-100
+                cursor-pointer"
+            />
+          </div>
+          {/* --- UPDATED SECTION END --- */}
 
           <div className="flex justify-end gap-3 pt-2">
             <button

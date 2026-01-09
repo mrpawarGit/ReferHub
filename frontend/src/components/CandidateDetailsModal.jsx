@@ -65,7 +65,7 @@ const CandidateDetailsModal = ({ candidate, onClose, onUpdated }) => {
       onClick={onClose}
     >
       <div
-        className="bg-white w-full max-w-lg rounded-lg p-6"
+        className="bg-white w-full max-w-lg rounded-lg p-6 shadow-xl"
         onClick={(e) => e.stopPropagation()}
       >
         <h2 className="text-xl font-bold mb-4">Candidate Details</h2>
@@ -76,80 +76,130 @@ const CandidateDetailsModal = ({ candidate, onClose, onUpdated }) => {
           </div>
         )}
 
-        <div className="space-y-3">
+        <div className="space-y-4">
           <div>
-            <label className="text-sm text-gray-600">Name</label>
+            <label className="text-sm font-medium text-gray-700">Name</label>
             <input
               name="name"
               value={formData.name}
               onChange={handleChange}
-              className="w-full border px-3 py-2 rounded"
+              className="w-full border border-gray-300 px-3 py-2 rounded mt-1 focus:ring-2 focus:ring-blue-500 outline-none"
             />
           </div>
 
           <div>
-            <label className="text-sm text-gray-600">Email</label>
+            <label className="text-sm font-medium text-gray-700">Email</label>
             <input
               name="email"
               value={formData.email}
               disabled
-              className="w-full border px-3 py-2 rounded bg-gray-100 cursor-not-allowed"
+              className="w-full border border-gray-300 px-3 py-2 rounded mt-1 bg-gray-100 text-gray-500 cursor-not-allowed"
             />
           </div>
 
           <div>
-            <label className="text-sm text-gray-600">Phone</label>
+            <label className="text-sm font-medium text-gray-700">Phone</label>
             <input
               name="phone"
               value={formData.phone}
               onChange={handleChange}
-              className="w-full border px-3 py-2 rounded"
+              className="w-full border border-gray-300 px-3 py-2 rounded mt-1 focus:ring-2 focus:ring-blue-500 outline-none"
             />
           </div>
 
           <div>
-            <label className="text-sm text-gray-600">Job Title</label>
+            <label className="text-sm font-medium text-gray-700">
+              Job Title
+            </label>
             <input
               name="jobTitle"
               value={formData.jobTitle}
               onChange={handleChange}
-              className="w-full border px-3 py-2 rounded"
+              className="w-full border border-gray-300 px-3 py-2 rounded mt-1 focus:ring-2 focus:ring-blue-500 outline-none"
             />
           </div>
 
-          {/* Resume */}
+          {/* --- UPDATED RESUME UI START --- */}
           {candidate.resumeUrl && (
-            <a
-              href={candidate.resumeUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-blue-600 text-sm underline inline-block mt-2"
-            >
-              View Resume (PDF)
-            </a>
+            <div className="pt-2">
+              <label className="text-sm font-medium text-gray-700 mb-2 block">
+                Resume
+              </label>
+              <a
+                href={candidate.resumeUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center p-3 border border-gray-200 rounded-lg bg-gray-50 hover:bg-blue-50 hover:border-blue-200 transition-all group"
+              >
+                {/* PDF Icon */}
+                <div className="p-2 bg-red-100 rounded-lg mr-3">
+                  <svg
+                    className="w-6 h-6 text-red-500"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
+                      d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z"
+                    />
+                  </svg>
+                </div>
+
+                <div className="flex-1">
+                  <p className="text-sm font-semibold text-gray-700 group-hover:text-blue-700">
+                    Open Resume.pdf
+                  </p>
+                  <p className="text-xs text-gray-500">
+                    Click to view document
+                  </p>
+                </div>
+
+                {/* External Link Icon */}
+                <svg
+                  className="w-5 h-5 text-gray-400 group-hover:text-blue-500"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+                  />
+                </svg>
+              </a>
+            </div>
           )}
+          {/* --- UPDATED RESUME UI END --- */}
         </div>
 
-        <div className="flex justify-between mt-6">
+        <div className="flex justify-between mt-8 pt-4 border-t">
           <button
             onClick={handleDelete}
-            className="px-4 py-2 bg-red-500 text-white rounded"
+            className="px-4 py-2 bg-red-50 text-red-600 hover:bg-red-100 font-medium rounded transition-colors"
             disabled={loading}
           >
             Delete
           </button>
 
           <div className="flex gap-3">
-            <button onClick={onClose} className="px-4 py-2 border rounded">
+            <button
+              onClick={onClose}
+              className="px-4 py-2 border border-gray-300 text-gray-700 rounded hover:bg-gray-50 font-medium"
+            >
               Cancel
             </button>
 
             <button
               onClick={handleUpdate}
-              className="px-4 py-2 bg-blue-600 text-white rounded"
+              className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 font-medium shadow-sm disabled:opacity-50"
               disabled={loading}
             >
-              Save Changes
+              {loading ? "Saving..." : "Save Changes"}
             </button>
           </div>
         </div>
