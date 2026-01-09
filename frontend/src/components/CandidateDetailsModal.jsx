@@ -119,7 +119,7 @@ const CandidateDetailsModal = ({ candidate, onClose, onUpdated }) => {
             />
           </div>
 
-          {/* --- UPDATED RESUME UI START --- */}
+          {/* --- UPDATED RESUME UI --- */}
           {candidate.resumeUrl && (
             <div className="pt-2">
               <label className="text-sm font-medium text-gray-700 mb-2 block">
@@ -174,7 +174,7 @@ const CandidateDetailsModal = ({ candidate, onClose, onUpdated }) => {
               </a>
             </div>
           )}
-          {/* --- UPDATED RESUME UI END --- */}
+          {/* --- UPDATED RESUME UI  --- */}
         </div>
 
         <div className="flex justify-between mt-8 pt-4 border-t">
