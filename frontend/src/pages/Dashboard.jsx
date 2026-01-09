@@ -75,7 +75,7 @@ const Dashboard = () => {
         <select
           value={statusFilter}
           onChange={(e) => setStatusFilter(e.target.value)}
-          className="border px-3 py-2 rounded w-full md:w-1/4"
+          className="border px-3 py-2 rounded w-full md:w-1/4 cursor-pointer"
         >
           <option value="All">All Status</option>
           <option value="Pending">Pending</option>

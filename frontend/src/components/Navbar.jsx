@@ -13,13 +13,14 @@ const Navbar = () => {
   return (
     <nav className="bg-white border-b shadow-sm">
       <div className="max-w-7xl mx-auto px-6 py-3 flex items-center justify-between">
-        {/* App Name */}
-        <h1
-          className="text-xl font-bold text-blue-600 cursor-pointer"
+        {/* Logo + App Name */}
+        <div
+          className="flex items-center gap-2 cursor-pointer"
           onClick={() => navigate("/")}
         >
-          ReferHub
-        </h1>
+          <img src="/logo.svg" alt="ReferHub Logo" className="h-8 w-8" />
+          <h1 className="text-2xl font-bold text-black">ReferHub</h1>
+        </div>
 
         {/* User Info */}
         <div className="flex items-center gap-4">
