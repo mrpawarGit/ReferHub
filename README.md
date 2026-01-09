@@ -8,10 +8,10 @@ It allows authenticated users to **refer candidates**, **upload resumes**, **tra
 ## 🌐 Live Demo
 
 * **Frontend (Vercel):**
-  👉 ReferHub Frontend
+  👉 [ReferHub App](https://refer-hub-five.vercel.app)
 
 * **Backend (Render):**
-  👉 [ReferHub Backend](https://referhub-kng8.onrender.com)
+  👉 [ReferHub-Backend](https://referhub-kng8.onrender.com)
 
 > ⚠️ Note:
 > The backend is deployed on **Render**, which may take a few seconds to wake up on the first request (cold start).
