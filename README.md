@@ -224,8 +224,11 @@ http://localhost:5173
 ## 🎯 Assignment Coverage
 
 ✔ All required features implemented
+
 ✔ Bonus features included (JWT, Cloudinary, deployment)
+
 ✔ Clean UI & UX
+
 ✔ Production-ready architecture
 
 ---
