@@ -8,16 +8,27 @@ export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
 
-  // run once
   useEffect(() => {
-    const token = localStorage.getItem("token");
-    const storedUser = localStorage.getItem("user");
+    const initApp = async () => {
+      try {
+        //  for cold start
+        await api.get("/");
 
-    if (token && storedUser) {
-      setUser(JSON.parse(storedUser));
-    }
+        // check - auth state
+        const token = localStorage.getItem("token");
+        const storedUser = localStorage.getItem("user");
 
-    setLoading(false);
+        if (token && storedUser) {
+          setUser(JSON.parse(storedUser));
+        }
+      } catch (error) {
+        console.error("Backend not reachable", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    initApp();
   }, []);
 
   // register
@@ -35,7 +46,7 @@ export const AuthProvider = ({ children }) => {
     setUser(res.data.user);
   };
 
-  // Logout
+  // logout
   const logout = () => {
     localStorage.removeItem("token");
     localStorage.removeItem("user");
