@@ -13,6 +13,10 @@ It allows authenticated users to **refer candidates**, **upload resumes**, **tra
 * **Backend (Render):**
   👉 [ReferHub-Backend](https://referhub-kng8.onrender.com)
 
+* **Presentation (Video):**
+  👉 [Video Link](https://drive.google.com/file/d/1yFo18ghlCvt_cmBFip7dFDDo5kvB4wn2/view?usp=drive_link
+)
+  
 > ⚠️ Note:
 > The backend is deployed on **Render**, which may take a few seconds to wake up on the first request (cold start).
 > A global loading screen is implemented in the frontend to handle this smoothly.
