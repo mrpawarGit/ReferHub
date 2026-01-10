@@ -36,7 +36,7 @@ exports.createCandidate = async (req, res) => {
 // get All candidates
 exports.getCandidates = async (req, res) => {
   try {
-    const candidates = await Candidate.find()
+    const candidates = await Candidate.find({ referredBy: req.user.id })
       .populate("referredBy", "name email")
       .sort({ createdAt: -1 });
 
@@ -84,7 +84,7 @@ exports.updateCandidateData = async (req, res) => {
     const { name, phone, jobTitle } = req.body;
 
     const candidate = await Candidate.findByIdAndUpdate(
-      req.params.id,
+      { _id: req.params.id, referredBy: req.user.id },
       { name, phone, jobTitle },
       { new: true }
     );
@@ -103,7 +103,10 @@ exports.updateCandidateData = async (req, res) => {
 exports.deleteCandidate = async (req, res) => {
   try {
     const { id } = req.params;
-    const candidate = await Candidate.findByIdAndDelete(id);
+    const candidate = await Candidate.findByIdAndDelete({
+      _id: req.params.id,
+      referredBy: req.user.id,
+    });
     if (!candidate) {
       return res.status(404).json({ message: "Candidate not found" });
     }
