@@ -7,16 +7,12 @@ It allows authenticated users to **refer candidates**, **upload resumes**, **tra
 
 ## 🌐 Live Demo
 
-* **Frontend (Vercel):**
+- **Frontend (Vercel):**
   👉 [ReferHub App](https://refer-hub-five.vercel.app)
 
-* **Backend (Render):**
+- **Backend (Render):**
   👉 [ReferHub-Backend](https://referhub-kng8.onrender.com)
 
-* **Presentation (Video):**
-  👉 [Video Link](https://drive.google.com/file/d/1yFo18ghlCvt_cmBFip7dFDDo5kvB4wn2/view?usp=drive_link
-)
-  
 > ⚠️ Note:
 > The backend is deployed on **Render**, which may take a few seconds to wake up on the first request (cold start).
 > A global loading screen is implemented in the frontend to handle this smoothly.
@@ -26,31 +22,32 @@ It allows authenticated users to **refer candidates**, **upload resumes**, **tra
 <img width="1130" height="659" alt="pro-referHub" src="https://github.com/user-attachments/assets/bc28aa6e-befc-4b97-ada3-7ce8ff59a95d" />
 
 ---
+
 ## 🏗 Tech Stack
 
 ### Frontend
 
-* React (Vite)
-* Tailwind CSS
-* React Router DOM
-* Axios
-* JWT Authentication
+- React (Vite)
+- Tailwind CSS
+- React Router DOM
+- Axios
+- JWT Authentication
 
 ### Backend
 
-* Node.js
-* Express.js
-* MongoDB (Mongoose)
-* JWT (Authentication & Authorization)
-* Multer (file handling)
-* Cloudinary (resume storage)
+- Node.js
+- Express.js
+- MongoDB (Mongoose)
+- JWT (Authentication & Authorization)
+- Multer (file handling)
+- Cloudinary (resume storage)
 
 ### Deployment
 
-* **Frontend:** Vercel
-* **Backend:** Render
-* **Database:** MongoDB Atlas
-* **File Storage:** Cloudinary
+- **Frontend:** Vercel
+- **Backend:** Render
+- **Database:** MongoDB Atlas
+- **File Storage:** Cloudinary
 
 ---
 
@@ -58,42 +55,42 @@ It allows authenticated users to **refer candidates**, **upload resumes**, **tra
 
 ### 🔐 Authentication
 
-* User registration & login
-* JWT-based authentication
-* Protected routes
-* Persistent login using localStorage
+- User registration & login
+- JWT-based authentication
+- Protected routes
+- Persistent login using localStorage
 
 ### 📊 Dashboard
 
-* View all referred candidates
-* Search candidates by **name or job title**
-* Filter candidates by **status**
-* Inline status update:
+- View all referred candidates
+- Search candidates by **name or job title**
+- Filter candidates by **status**
+- Inline status update:
 
-  * Pending → Reviewed → Hired
+  - Pending → Reviewed → Hired
 
 ### ➕ Refer Candidate
 
-* Modal-based referral form
-* Upload resume (PDF only)
-* User-friendly resume upload UI
-* Resume stored securely on Cloudinary
+- Modal-based referral form
+- Upload resume (PDF only)
+- User-friendly resume upload UI
+- Resume stored securely on Cloudinary
 
 ### 👁️ Candidate Management
 
-* Click on a candidate card to:
+- Click on a candidate card to:
 
-  * View full candidate details
-  * Edit candidate information
-  * Delete candidate
-  * Open resume PDF in browser
+  - View full candidate details
+  - Edit candidate information
+  - Delete candidate
+  - Open resume PDF in browser
 
 ### ⏳ UX Enhancements
 
-* Global loading screen (handles backend cold start)
-* Clean layout with Navbar & Footer
-* Modal-based workflows
-* Proper error & loading states
+- Global loading screen (handles backend cold start)
+- Clean layout with Navbar & Footer
+- Modal-based workflows
+- Proper error & loading states
 
 ---
 
@@ -125,7 +122,7 @@ ReferHub/
 │   │   └── styles/
 │   └── README.md
 │
-└── README.md  
+└── README.md
 ```
 
 ---
@@ -211,20 +208,20 @@ http://localhost:5173
 
 ## 🧠 Design Decisions & Architecture
 
-* **Modal-based candidate management** instead of route-based pages for faster UX
-* **Client-side filtering & search** for responsiveness
-* **Separate status update endpoint** for clean API design
-* **Cloudinary for resumes** to avoid filesystem issues on deployment
-* **Central Axios instance** with JWT interceptor
-* **Global loading screen** to handle Render cold starts gracefully
+- **Modal-based candidate management** instead of route-based pages for faster UX
+- **Client-side filtering & search** for responsiveness
+- **Separate status update endpoint** for clean API design
+- **Cloudinary for resumes** to avoid filesystem issues on deployment
+- **Central Axios instance** with JWT interceptor
+- **Global loading screen** to handle Render cold starts gracefully
 
 ---
 
 ## 🧪 Testing Strategy
 
-* Backend APIs tested using **Postman**
-* Authentication flow manually tested via browser & Network tab
-* Frontend state and API integration tested end-to-end
+- Backend APIs tested using **Postman**
+- Authentication flow manually tested via browser & Network tab
+- Frontend state and API integration tested end-to-end
 
 ---
 
